@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__system-control__open_url",
+      "mcp__system-control__desktop_notification"
+    ]
+  }
+}

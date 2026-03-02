@@ -1,0 +1,168 @@
+{
+  "$schema": "claude-registry-v1",
+  "description": "Local capability registry for Claude Code",
+  "lastUpdated": "2026-03-03",
+  "capabilities": [
+    {
+      "name": "new-project",
+      "type": "skill",
+      "scope": "global",
+      "description": "Scaffold .claude/ directory with language-aware rules",
+      "tags": ["scaffolding", "project-setup", "global"],
+      "entrypoint": "~/.claude/skills/new-project/SKILL.md",
+      "invoke": "/new-project [language]"
+    },
+    {
+      "name": "code-review",
+      "type": "skill",
+      "scope": "global",
+      "description": "4-dimension structured code review (security, performance, quality, tests)",
+      "tags": ["review", "security", "quality", "global"],
+      "entrypoint": "~/.claude/skills/code-review/SKILL.md",
+      "invoke": "/code-review [target]"
+    },
+    {
+      "name": "debug",
+      "type": "skill",
+      "scope": "global",
+      "description": "Systematic 6-step debugging: reproduce, isolate, root cause, fix, verify, document",
+      "tags": ["debugging", "troubleshooting", "global"],
+      "entrypoint": "~/.claude/skills/debug/SKILL.md",
+      "invoke": "/debug [description]"
+    },
+    {
+      "name": "research",
+      "type": "skill",
+      "scope": "global",
+      "description": "Deep multi-angle research with structured findings saved to plans/",
+      "tags": ["research", "websearch", "analysis", "global"],
+      "entrypoint": "~/.claude/skills/research/SKILL.md",
+      "invoke": "/research <topic>"
+    },
+    {
+      "name": "send-message",
+      "type": "skill",
+      "scope": "global",
+      "description": "Send messages and files via Telegram",
+      "tags": ["messaging", "telegram", "notifications"],
+      "entrypoint": "~/.claude/skills/send-message/SKILL.md",
+      "invoke": "/send-message <message>"
+    },
+    {
+      "name": "schedule",
+      "type": "skill",
+      "scope": "global",
+      "description": "Schedule tasks, reminders, and recurring commands",
+      "tags": ["scheduling", "cron", "reminders"],
+      "entrypoint": "~/.claude/skills/schedule/SKILL.md",
+      "invoke": "/schedule <task>"
+    },
+    {
+      "name": "github-mcp",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "GitHub code search, PRs, issues, repo analysis via HTTP",
+      "tags": ["github", "code-search", "pr", "issues"],
+      "transport": "http",
+      "status": "active"
+    },
+    {
+      "name": "telegram",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "Send/receive Telegram messages, files, and interactive prompts",
+      "tags": ["messaging", "telegram", "notifications"],
+      "transport": "stdio",
+      "command": "cmd /c npx -y mcp-communicator-telegram",
+      "status": "active"
+    },
+    {
+      "name": "dbhub",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "Multi-database access: SQLite, PostgreSQL, MySQL, SQL Server",
+      "tags": ["database", "sql", "sqlite", "postgres"],
+      "transport": "stdio",
+      "command": "cmd /c npx -y @bytebase/dbhub",
+      "status": "active"
+    },
+    {
+      "name": "system-control",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "Windows system control: clipboard, screenshots, processes, notifications",
+      "tags": ["system", "clipboard", "screenshot", "windows"],
+      "transport": "stdio",
+      "command": "python ~/.claude/mcp-servers/system-control/server.py",
+      "status": "active"
+    },
+    {
+      "name": "tts",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "Text-to-speech via edge-tts with 300+ voices",
+      "tags": ["tts", "voice", "audio", "speech"],
+      "transport": "stdio",
+      "command": "python ~/.claude/mcp-servers/tts/server.py",
+      "status": "active"
+    },
+    {
+      "name": "scheduler",
+      "type": "mcp-server",
+      "scope": "global",
+      "description": "Task scheduling, reminders, and cron via Windows Task Scheduler",
+      "tags": ["scheduling", "cron", "reminders", "tasks"],
+      "transport": "stdio",
+      "command": "python ~/.claude/mcp-servers/scheduler/server.py",
+      "status": "active"
+    },
+    {
+      "name": "superpowers",
+      "type": "plugin",
+      "scope": "global",
+      "description": "Advanced planning, brainstorming, and development workflows",
+      "tags": ["planning", "brainstorming", "development"],
+      "source": "superpowers@claude-plugins-official"
+    },
+    {
+      "name": "context7",
+      "type": "plugin",
+      "scope": "global",
+      "description": "Search and fetch up-to-date library documentation",
+      "tags": ["docs", "search", "libraries"],
+      "source": "context7@claude-plugins-official"
+    },
+    {
+      "name": "playwright",
+      "type": "plugin",
+      "scope": "global",
+      "description": "Browser automation — navigate, click, screenshot, evaluate JS",
+      "tags": ["browser", "testing", "automation", "screenshots"],
+      "source": "playwright@claude-plugins-official"
+    },
+    {
+      "name": "frontend-design",
+      "type": "plugin",
+      "scope": "global",
+      "description": "Generate and preview frontend UI components",
+      "tags": ["ui", "frontend", "design", "preview"],
+      "source": "frontend-design@claude-plugins-official"
+    },
+    {
+      "name": "google-calendar",
+      "type": "mcp-cloud",
+      "scope": "global",
+      "description": "Google Calendar integration",
+      "tags": ["calendar", "scheduling"],
+      "status": "needs-auth"
+    },
+    {
+      "name": "gmail",
+      "type": "mcp-cloud",
+      "scope": "global",
+      "description": "Gmail email integration",
+      "tags": ["email", "communication"],
+      "status": "needs-auth"
+    }
+  ]
+}
