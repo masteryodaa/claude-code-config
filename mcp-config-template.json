@@ -1,0 +1,40 @@
+{
+  "_comment": "Copy the mcpServers block into your ~/.claude.json. Replace <PLACEHOLDERS> with actual values.",
+  "mcpServers": {
+    "github-mcp": {
+      "type": "stdio",
+      "command": "<PATH_TO>/.claude/bin/github-mcp-server.exe",
+      "args": ["stdio"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_GITHUB_PAT>"
+      }
+    },
+    "telegram": {
+      "type": "stdio",
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "-p", "mcp-communicator-telegram", "mcptelegram"],
+      "env": {
+        "TELEGRAM_TOKEN": "<YOUR_TELEGRAM_BOT_TOKEN>",
+        "CHAT_ID": "<YOUR_TELEGRAM_CHAT_ID>"
+      }
+    },
+    "system-control": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["<HOME>/.claude/mcp-servers/system-control/server.py"],
+      "env": {}
+    },
+    "tts": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["<HOME>/.claude/mcp-servers/tts/server.py"],
+      "env": {}
+    },
+    "scheduler": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["<HOME>/.claude/mcp-servers/scheduler/server.py"],
+      "env": {}
+    }
+  }
+}
